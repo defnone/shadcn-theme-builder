@@ -82,28 +82,32 @@ ${Object.entries(theme)
   };
 
   return (
-    <div className="max-w-[1200px] lg:min-w-[400px] mx-auto">
+    <div className="max-w-[1200px] lg:min-w-[450px]  p-0">
       {openColorPicker ? (
-        <div className="inset-0 z-50 flex items-start justify-start">
-          <div className="w-full max-w-[500px] h-screen overflow-y-auto">
-            <div className="flex justify-between items-center mb-3">
-              <h2 className="text-lg font-extrabold">
-                {variables.find((v) => v.name === openColorPicker)?.label}
-              </h2>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setOpenColorPicker(null)}
-              >
-                Close
-              </Button>
+        <div className="sticky top-0 left-0 w-[450px] z-0">
+          <div className="absolute left-0 top-0 max-w-[450px] h-screen overflow-y-auto bg-background ">
+            <div className="sticky top-0 bg-background p-4 border-b">
+              <div className="flex justify-between items-center">
+                <h2 className="text-lg font-extrabold">
+                  {variables.find((v) => v.name === openColorPicker)?.label}
+                </h2>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setOpenColorPicker(null)}
+                >
+                  Close
+                </Button>
+              </div>
             </div>
-            <ColorPicker
-              isColorPickerMode={true}
-              setIsColorPickerMode={() => setOpenColorPicker(null)}
-              value={theme[openColorPicker]}
-              onChange={(value) => handleColorChange(openColorPicker, value)}
-            />
+            <div className="p-4">
+              <ColorPicker
+                isColorPickerMode={true}
+                setIsColorPickerMode={() => setOpenColorPicker(null)}
+                value={theme[openColorPicker]}
+                onChange={(value) => handleColorChange(openColorPicker, value)}
+              />
+            </div>
           </div>
         </div>
       ) : (

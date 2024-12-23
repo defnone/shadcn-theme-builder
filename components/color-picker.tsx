@@ -101,7 +101,7 @@ export function ColorPicker({
   if (isColorPickerMode) {
     return (
       <div className="w-full">
-        <div className="rounded-lg border shadow-md bg-background ">
+        <div className="rounded-lg ">
           <div className="grid grid-cols-2">
             <div className="p-4 ">
               <div className="text-sm font-medium mb-2">User color</div>
