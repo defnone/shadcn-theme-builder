@@ -62,9 +62,9 @@ import {
 
 export function ThemeExamples() {
   return (
-    <div className="space-y-16">
+    <div className="space-y-16 pl-7 border-l">
       {/* Alerts */}
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-row gap-4">
         <Alert>
           <Info className="h-4 w-4" />
           <AlertTitle>Information</AlertTitle>
@@ -96,10 +96,6 @@ export function ThemeExamples() {
           <a href="#" className="text-primary hover:underline">
             primary colored link
           </a>
-          . And this is a{" "}
-          <a href="#" className="text-secondary hover:underline">
-            secondary colored link
-          </a>
           .
         </p>
         <p className="text-muted-foreground">
@@ -107,76 +103,61 @@ export function ThemeExamples() {
           less important or supplementary information.
         </p>
       </div>
-
+      {/* Basic Card Example */}
       <div className="grid gap-4">
-        {/* Basic Card Example */}
-        <Card className="bg-card text-card-foreground">
-          <CardHeader>
-            <CardTitle>Card Title</CardTitle>
-            <CardDescription>
-              This is a basic card example showing card and card-foreground
-              colors.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Card content demonstrating the default text color.</p>
-          </CardContent>
-          <CardFooter className="flex gap-2">
-            <Button>Primary Button</Button>
-            <Button variant="secondary">Secondary Button</Button>
-            <Button variant="outline">Outline Button</Button>
-            <Button variant="ghost">Ghost Button</Button>
-          </CardFooter>
-        </Card>
+        <div className="grid grid-cols-2 gap-4">
+          <Card className="bg-card text-card-foreground">
+            <CardHeader>
+              <CardTitle>Card Title</CardTitle>
+              <CardDescription>
+                This is a basic card example showing card and card-foreground
+                colors.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>Card content demonstrating the default text color.</p>
+            </CardContent>
+            <CardFooter className="flex gap-4 flex-wrap">
+              <Button>Primary Button</Button>
+              <Button variant="secondary">Secondary Button</Button>
+              <Button variant="outline">Outline Button</Button>
+              <Button variant="ghost">Ghost Button</Button>
+              <div className="space-y-2">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline">Open Menu</Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>Profile</DropdownMenuItem>
+                    <DropdownMenuItem>Billing</DropdownMenuItem>
+                    <DropdownMenuItem>Team</DropdownMenuItem>
+                    <DropdownMenuItem>Subscription</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </CardFooter>
+          </Card>
 
-        {/* Form Elements */}
-        <Card className="bg-card text-card-foreground">
-          <CardHeader>
-            <CardTitle>Form Elements</CardTitle>
-            <CardDescription>
-              Examples of form elements showing input and border colors.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label>Input Example</Label>
-              <Input type="email" placeholder="Enter your email" />
-            </div>
-            <div className="space-y-2">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline">Open Menu</Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
-                  <DropdownMenuItem>Billing</DropdownMenuItem>
-                  <DropdownMenuItem>Team</DropdownMenuItem>
-                  <DropdownMenuItem>Subscription</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Badges */}
-        <Card className="bg-card text-card-foreground">
-          <CardHeader>
-            <CardTitle>Badges</CardTitle>
-            <CardDescription>
-              Different badge variants showing various color combinations.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex gap-2 flex-wrap">
-              <Badge>Default Badge</Badge>
-              <Badge variant="secondary">Secondary Badge</Badge>
-              <Badge variant="destructive">Destructive Badge</Badge>
-              <Badge variant="outline">Outline Badge</Badge>
-            </div>
-          </CardContent>
-        </Card>
+          {/* Badges */}
+          <Card className="bg-card text-card-foreground">
+            <CardHeader>
+              <CardTitle>Badges</CardTitle>
+              <CardDescription>
+                Different badge variants showing various color combinations.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex gap-2 flex-wrap">
+                <Badge>Default Badge</Badge>
+                <Badge variant="secondary">Secondary Badge</Badge>
+                <Badge variant="destructive">Destructive Badge</Badge>
+                <Badge variant="outline">Outline Badge</Badge>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Status Cards */}
         <div className="grid md:grid-cols-3 gap-4">
@@ -211,20 +192,23 @@ export function ThemeExamples() {
         </div>
 
         {/* Accent Card */}
-        <Card className="bg-accent text-accent-foreground">
-          <CardHeader>
-            <CardTitle>Accent Example</CardTitle>
-            <CardDescription>
-              This card uses accent and accent-foreground colors.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Content using accent colors for emphasis.</p>
-          </CardContent>
-          <CardFooter>
-            <Button variant="secondary">Action Button</Button>
-          </CardFooter>
-        </Card>
+        <div className="flex flex-row w-full border border-border rounded-lg p-0.5">
+          <div className="w-1/3 bg-background px-8 py-8">
+            <div className="bg-accent rounded-md p-4 text-accent-foreground font-bold">
+              Accent on background
+            </div>
+          </div>
+          <div className="w-1/3 bg-card px-8 py-8">
+            <div className="bg-accent rounded-md p-4 text-accent-foreground font-bold">
+              Accent on card
+            </div>
+          </div>
+          <div className="w-1/3 bg-popover px-8 py-8">
+            <div className="bg-accent rounded-md p-4 text-accent-foreground font-bold">
+              Accent on popover
+            </div>
+          </div>
+        </div>
 
         {/* Form Example */}
         <Card className="bg-card text-card-foreground">
@@ -350,14 +334,14 @@ export function ThemeExamples() {
         </Card>
 
         {/* Dialogs Examples */}
-        <Card className="bg-card text-card-foreground">
+        <Card className="bg-card text-card-foreground ">
           <CardHeader>
             <CardTitle>Dialogs Examples</CardTitle>
             <CardDescription>
               Examples of different dialog component usages
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="gap-8 flex flex-row">
             {/* Basic Confirmation Dialog */}
             <div className="space-y-2">
               <h3 className="text-lg font-medium">Confirmation Dialog</h3>
