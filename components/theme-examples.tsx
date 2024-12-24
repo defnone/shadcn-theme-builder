@@ -66,7 +66,7 @@ import Link from 'next/link';
 
 export function ThemeExamples() {
   return (
-    <div className='flex flex-col space-y-16 py-10 pl-[550px] pr-10'>
+    <div className='flex flex-col space-y-16 py-10 pl-[500px] pr-10'>
       {/* Alerts */}
       <div className='flex flex-row gap-4'>
         <Alert>
@@ -104,9 +104,19 @@ export function ThemeExamples() {
           supplementary information.
         </p>
       </div>
+
+      {/* Badges */}
+      <div className='flex flex-col gap-4'>
+        <div className='flex flex-wrap gap-2'>
+          <Badge>Default Badge</Badge>
+          <Badge variant='secondary'>Secondary Badge</Badge>
+          <Badge variant='destructive'>Destructive Badge</Badge>
+          <Badge variant='outline'>Outline Badge</Badge>
+        </div>
+      </div>
       {/* Basic Card Example */}
       <div className='grid gap-4'>
-        <div className='grid grid-cols-2 gap-4'>
+        <div className='grid grid-cols-1 gap-4'>
           <Card className='bg-card text-card-foreground'>
             <CardHeader>
               <CardTitle>Card Title</CardTitle>
@@ -117,11 +127,29 @@ export function ThemeExamples() {
             <CardContent>
               <p>Card content demonstrating the default text color.</p>
             </CardContent>
-            <CardFooter className='flex flex-wrap gap-4'>
-              <Button>Primary Button</Button>
-              <Button variant='secondary'>Secondary Button</Button>
-              <Button variant='outline'>Outline Button</Button>
-              <Button variant='ghost'>Ghost Button</Button>
+            <CardFooter className='flex flex-wrap gap-8'>
+              <div className='flex gap-2'>
+                <Button>Primary Button</Button>
+                <Button disabled>Primary Button</Button>
+              </div>
+              <div className='flex gap-2'>
+                <Button variant='secondary'>Secondary Button</Button>
+                <Button variant='secondary' disabled>
+                  Secondary Button
+                </Button>
+              </div>
+              <div className='flex gap-2'>
+                <Button variant='outline'>Outline Button</Button>
+                <Button variant='outline' disabled>
+                  Outline Button
+                </Button>
+              </div>
+              <div className='flex gap-2'>
+                <Button variant='ghost'>Ghost Button</Button>
+                <Button variant='ghost' disabled>
+                  Ghost Button
+                </Button>
+              </div>
               <div className='space-y-2'>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -139,24 +167,6 @@ export function ThemeExamples() {
               </div>
             </CardFooter>
           </Card>
-
-          {/* Badges */}
-          <Card className='bg-card text-card-foreground'>
-            <CardHeader>
-              <CardTitle>Badges</CardTitle>
-              <CardDescription>
-                Different badge variants showing various color combinations.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className='space-y-4'>
-              <div className='flex flex-wrap gap-2'>
-                <Badge>Default Badge</Badge>
-                <Badge variant='secondary'>Secondary Badge</Badge>
-                <Badge variant='destructive'>Destructive Badge</Badge>
-                <Badge variant='outline'>Outline Badge</Badge>
-              </div>
-            </CardContent>
-          </Card>
         </div>
 
         {/* Status Cards */}
@@ -164,45 +174,47 @@ export function ThemeExamples() {
           <Card className='bg-primary text-primary-foreground'>
             <CardHeader>
               <CardTitle className='flex items-center gap-2'>
-                <Check className='h-4 w-4' /> Success
+                <Check className='h-4 w-4' /> Primary
               </CardTitle>
             </CardHeader>
-            <CardContent>Using primary colors for success state</CardContent>
+            <CardContent>Example of primary background color and primary text color</CardContent>
           </Card>
 
           <Card className='bg-secondary text-secondary-foreground'>
             <CardHeader>
               <CardTitle className='flex items-center gap-2'>
-                <Bell className='h-4 w-4' /> Notification
+                <Bell className='h-4 w-4' /> Secondary
               </CardTitle>
             </CardHeader>
-            <CardContent>Using secondary colors for notification state</CardContent>
+            <CardContent>
+              Example of secondary background color and secondary text color
+            </CardContent>
           </Card>
 
           <Card className='bg-muted text-muted-foreground'>
             <CardHeader>
               <CardTitle className='flex items-center gap-2'>
-                <X className='h-4 w-4' /> Disabled
+                <X className='h-4 w-4' /> Muted
               </CardTitle>
             </CardHeader>
-            <CardContent>Using muted colors for disabled state</CardContent>
+            <CardContent>Example of muted background color and muted text color</CardContent>
           </Card>
         </div>
 
         {/* Accent Card */}
-        <div className='border-border flex w-full flex-row rounded-lg border p-0.5'>
+        <div className='border-border flex w-full flex-row rounded-lg border p-0.5 text-[0.97rem]'>
           <div className='bg-background w-1/3 px-8 py-8'>
-            <div className='bg-accent text-accent-foreground rounded-md p-4 font-bold'>
+            <div className='bg-accent text-accent-foreground rounded-md p-4 text-center'>
               Accent on background
             </div>
           </div>
           <div className='bg-card w-1/3 px-8 py-8'>
-            <div className='bg-accent text-accent-foreground rounded-md p-4 font-bold'>
+            <div className='bg-accent text-accent-foreground rounded-md p-4 text-center'>
               Accent on card
             </div>
           </div>
           <div className='bg-popover w-1/3 px-8 py-8'>
-            <div className='bg-accent text-accent-foreground rounded-md p-4 font-bold'>
+            <div className='bg-accent text-accent-foreground rounded-md p-4 text-center'>
               Accent on popover
             </div>
           </div>
@@ -394,7 +406,7 @@ export function ThemeExamples() {
             <CardTitle>Dialogs Examples</CardTitle>
             <CardDescription>Examples of different dialog component usages</CardDescription>
           </CardHeader>
-          <CardContent className='flex flex-row gap-8'>
+          <CardContent className='flex flex-row gap-3'>
             {/* Basic Confirmation Dialog */}
             <div className='space-y-2'>
               <Dialog>
