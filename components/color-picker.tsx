@@ -208,7 +208,7 @@ export function ColorPicker({
   return (
     <Button
       variant="outline"
-      className="w-full justify-between"
+      className="w-full justify-between border-sidebar-border bg-sidebar-primary hover:bg-sidebar-accent"
       onClick={() => setIsColorPickerMode(true)}
     >
       {selectedColor ? (
