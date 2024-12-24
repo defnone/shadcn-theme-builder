@@ -1,24 +1,14 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { ChevronDown } from "lucide-react";
-import { HexColorPicker } from "react-colorful";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
-  ColorName,
-  ColorOption,
-  ShadeNumber,
-  colorOptions,
-  tailwindColors,
-} from "@/lib/colors";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
+import * as React from 'react';
+import { ChevronDown } from 'lucide-react';
+import { HexColorPicker } from 'react-colorful';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { ColorName, ColorOption, ShadeNumber, colorOptions, tailwindColors } from '@/lib/colors';
+import { Label } from './ui/label';
+import { Input } from './ui/input';
 
 interface ColorPickerProps {
   value: string;
@@ -36,14 +26,13 @@ function hslToHex(h: number, s: number, l: number): string {
     const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
     return Math.round(255 * color)
       .toString(16)
-      .padStart(2, "0");
+      .padStart(2, '0');
   };
   return `#${f(0)}${f(8)}${f(4)}`;
 }
 
 function hexToHsl(hex: string): string {
-  // Remove the hash at the start if it's there
-  hex = hex.replace(/^#/, "");
+  hex = hex.replace(/^#/, '');
 
   // Parse the r, g, b values
   const r = parseInt(hex.substr(0, 2), 16) / 255;
@@ -85,55 +74,53 @@ export function ColorPicker({
   setIsColorPickerMode,
 }: ColorPickerProps) {
   const [pickerOpen, setPickerOpen] = React.useState(false);
-  const [selectedColor, setSelectedColor] = React.useState<ColorOption | null>(
-    () => {
-      const found = colorOptions.find((option) => option.value === value);
-      return found || null;
-    }
-  );
+  const [selectedColor, setSelectedColor] = React.useState<ColorOption | null>(() => {
+    const found = colorOptions.find(option => option.value === value);
+    return found || null;
+  });
 
   const [customColor, setCustomColor] = React.useState(() => {
     if (!selectedColor) {
-      const [h, s, l] = value.split(" ").map((v) => parseFloat(v));
+      const [h, s, l] = value.split(' ').map(v => parseFloat(v));
       return hslToHex(h, s, l);
     }
-    return "#000000";
+    return '#000000';
   });
 
   if (isColorPickerMode) {
     return (
-      <div className="w-full">
-        <div className="rounded-lg ">
-          <div className="grid grid-cols-2">
-            <div className="p-4 ">
-              <div className="text-sm font-medium mb-2">Custom color</div>
+      <div className='w-full'>
+        <div className='rounded-lg'>
+          <div className='grid grid-cols-2'>
+            <div className='p-4'>
+              <div className='mb-2 text-sm font-medium'>Custom color</div>
               <Popover open={pickerOpen} onOpenChange={setPickerOpen}>
                 <PopoverTrigger asChild>
                   <div
                     className={cn(
-                      "h-10 rounded-md cursor-pointer ring-offset-background",
-                      "transition-all hover:ring-2 hover:ring-ring hover:ring-offset-2",
-                      !selectedColor && "ring-2 ring-ring ring-offset-2"
+                      'h-10 cursor-pointer rounded-md ring-offset-background',
+                      'transition-all hover:ring-2 hover:ring-ring hover:ring-offset-2',
+                      !selectedColor && 'ring-2 ring-ring ring-offset-2'
                     )}
                     style={{ background: customColor }}
                   />
                 </PopoverTrigger>
-                <PopoverContent className="w-full">
-                  <div className="space-y-4">
+                <PopoverContent className='w-full'>
+                  <div className='space-y-4'>
                     <HexColorPicker
                       color={customColor}
-                      onChange={(hex) => {
+                      onChange={hex => {
                         setCustomColor(hex);
                         setSelectedColor(null);
                         onChange(hexToHsl(hex));
                       }}
                     />
-                    <div className="flex flex-col gap-2">
-                      <div className="space-y-1.5">
+                    <div className='flex flex-col gap-2'>
+                      <div className='space-y-1.5'>
                         <Label>Hex</Label>
                         <Input
                           value={customColor}
-                          onChange={(e) => {
+                          onChange={e => {
                             const hex = e.target.value;
                             setCustomColor(hex);
                             setSelectedColor(null);
@@ -141,17 +128,15 @@ export function ColorPicker({
                           }}
                         />
                       </div>
-                      <div className="space-y-1.5">
+                      <div className='space-y-1.5'>
                         <Label>HSL</Label>
                         <Input
                           value={value}
-                          onChange={(e) => {
+                          onChange={e => {
                             const hsl = e.target.value;
                             onChange(hsl);
                             setSelectedColor(null);
-                            const [h, s, l] = hsl
-                              .split(" ")
-                              .map((v) => parseFloat(v));
+                            const [h, s, l] = hsl.split(' ').map(v => parseFloat(v));
                             setCustomColor(hslToHex(h, s, l));
                           }}
                         />
@@ -162,20 +147,20 @@ export function ColorPicker({
               </Popover>
             </div>
             {Object.entries(tailwindColors)
-              .filter(([name]) => name !== "custom")
+              .filter(([name]) => name !== 'custom')
               .map(([colorName, shades]) => (
-                <div key={colorName} className="p-4">
-                  <div className="text-sm font-medium mb-2">{colorName}</div>
-                  <div className="grid grid-cols-11 gap-1">
+                <div key={colorName} className='p-4'>
+                  <div className='mb-2 text-sm font-medium'>{colorName}</div>
+                  <div className='grid grid-cols-11 gap-1'>
                     {Object.entries(shades).map(([shade, value]) => (
                       <div
                         key={`${colorName}-${shade}`}
                         className={cn(
-                          "h-5 w-5 rounded-md cursor-pointer ring-offset-background",
-                          "transition-all hover:scale-110 hover:ring-2 hover:ring-ring hover:ring-offset-2",
+                          'h-5 w-5 cursor-pointer rounded-md ring-offset-background',
+                          'transition-all hover:scale-110 hover:ring-2 hover:ring-ring hover:ring-offset-2',
                           selectedColor?.name === colorName &&
                             String(selectedColor?.shade) === shade &&
-                            "ring-2 ring-ring ring-offset-2"
+                            'ring-2 ring-ring ring-offset-2'
                         )}
                         style={{ background: `hsl(${value})` }}
                         onClick={() => {
@@ -191,11 +176,8 @@ export function ColorPicker({
                   </div>
                 </div>
               ))}
-            <div className="p-4 flex justify-end">
-              <Button
-                variant="outline"
-                onClick={() => setIsColorPickerMode(false)}
-              >
+            <div className='flex h-full w-full items-end justify-end p-4'>
+              <Button variant='outline' onClick={() => setIsColorPickerMode(false)}>
                 Close
               </Button>
             </div>
@@ -207,30 +189,23 @@ export function ColorPicker({
 
   return (
     <Button
-      variant="outline"
-      className="w-full justify-between border-sidebar-border bg-sidebar-primary hover:bg-sidebar-accent"
-      onClick={() => setIsColorPickerMode(true)}
-    >
+      variant='outline'
+      className='w-full justify-between border-sidebar-border bg-sidebar-primary hover:bg-sidebar-accent'
+      onClick={() => setIsColorPickerMode(true)}>
       {selectedColor ? (
-        <div className="flex items-center gap-2">
-          <div
-            className="h-4 w-4 rounded"
-            style={{ background: `hsl(${selectedColor.value})` }}
-          />
+        <div className='flex items-center gap-2'>
+          <div className='h-4 w-4 rounded' style={{ background: `hsl(${selectedColor.value})` }} />
           <span>
             {selectedColor.name} {selectedColor.shade}
           </span>
         </div>
       ) : (
-        <div className="flex items-center gap-2">
-          <div
-            className="h-4 w-4 rounded"
-            style={{ background: customColor }}
-          />
+        <div className='flex items-center gap-2'>
+          <div className='h-4 w-4 rounded' style={{ background: customColor }} />
           <span>Custom color</span>
         </div>
       )}
-      <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+      <ChevronDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
     </Button>
   );
 }
