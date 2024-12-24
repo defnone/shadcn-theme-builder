@@ -43,6 +43,19 @@ export default {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
+  			sidebar: {
+  				background: 'hsl(var(--sidebar-background))',
+  				foreground: 'hsl(var(--sidebar-foreground))',
+  				primary: 'hsl(var(--sidebar-primary))',
+  				primaryForeground: 'hsl(var(--sidebar-primary-foreground))',
+  				accent: 'hsl(var(--sidebar-accent))',
+  				accentForeground: 'hsl(var(--sidebar-accent-foreground))',
+  				border: 'hsl(var(--sidebar-border))',
+  				ring: 'hsl(var(--sidebar-ring))',
+  				DEFAULT: 'hsl(var(--sidebar-background))',
+  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))'
+  			},
   			chart: {
   				'1': 'hsl(var(--chart-1))',
   				'2': 'hsl(var(--chart-2))',
