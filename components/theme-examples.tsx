@@ -59,6 +59,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function ThemeExamples() {
   return (
@@ -210,67 +211,130 @@ export function ThemeExamples() {
           </div>
         </div>
 
-        {/* Form Example */}
-        <Card className="bg-card text-card-foreground">
-          <CardHeader>
-            <CardTitle>Extended Form</CardTitle>
-            <CardDescription>
-              Example of a form with various input elements and validation
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="username">Username</Label>
-              <Input id="username" placeholder="Enter your username" />
-            </div>
+        {/* Form Example and Table Example */}
+        <div className="grid grid-cols-2 gap-4">
+          <Card className="bg-card text-card-foreground">
+            <CardHeader>
+              <CardTitle>Extended Form</CardTitle>
+              <CardDescription>
+                Example of a form with various input elements and validation
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="username">Username</Label>
+                <Input
+                  id="username"
+                  placeholder="Enter your username"
+                  value="PedroDuarte"
+                  className="ring-2 ring-ring ring-offset-2 ring-offset-background"
+                  onChange={(e) => console.log(e.target.value)}
+                />
+              </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="example@example.com"
-                className="border-destructive"
-              />
-              <p className="text-sm text-destructive">
-                Please enter a valid email
-              </p>
-            </div>
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="example@example.com"
+                  className="border-destructive"
+                />
+                <p className="text-sm text-destructive">
+                  Please enter a valid email
+                </p>
+              </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="role">Role</Label>
-              <Select>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select a role" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="admin">Admin</SelectItem>
-                  <SelectItem value="user">User</SelectItem>
-                  <SelectItem value="editor">Editor</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+              <div className="space-y-2">
+                <Label htmlFor="role">Role</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a role" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="admin">Admin</SelectItem>
+                    <SelectItem value="user">User</SelectItem>
+                    <SelectItem value="editor">Editor</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="bio">About me</Label>
-              <Textarea
-                id="bio"
-                placeholder="Tell me about yourself..."
-                className="min-h-[100px]"
-              />
-            </div>
+              <div className="space-y-2">
+                <Label htmlFor="bio">About me</Label>
+                <Textarea
+                  id="bio"
+                  placeholder="Tell me about yourself..."
+                  className="min-h-[100px]"
+                />
+              </div>
 
-            <div className="flex items-center space-x-2">
-              <Checkbox id="terms" />
-              <Label htmlFor="terms" className="text-sm">
-                I agree to the terms of use
-              </Label>
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button className="w-full">Submit</Button>
-          </CardFooter>
-        </Card>
+              <div className="flex items-center space-x-2">
+                <Checkbox id="terms" checked />
+                <Label htmlFor="terms" className="text-sm">
+                  I agree to the terms of use
+                </Label>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full">Submit</Button>
+            </CardFooter>
+          </Card>
+
+          <Tabs defaultValue="account" className="w-full mx-auto">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="account">Account</TabsTrigger>
+              <TabsTrigger value="password">Password</TabsTrigger>
+            </TabsList>
+            <TabsContent value="account">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Account</CardTitle>
+                  <CardDescription>
+                    Make changes to your account here. Click save when
+                    you&apos;re done.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="space-y-1">
+                    <Label htmlFor="name">Name</Label>
+                    <Input id="name" defaultValue="Pedro Duarte" />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor="username">Username</Label>
+                    <Input id="username" defaultValue="@peduarte" disabled />
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button disabled>Save changes</Button>
+                </CardFooter>
+              </Card>
+            </TabsContent>
+            <TabsContent value="password">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Password</CardTitle>
+                  <CardDescription>
+                    Change your password here. After saving, you&apos;ll be
+                    logged out.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <div className="space-y-1">
+                    <Label htmlFor="current">Current password</Label>
+                    <Input id="current" type="password" />
+                  </div>
+                  <div className="space-y-1">
+                    <Label htmlFor="new">New password</Label>
+                    <Input id="new" type="password" />
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button>Save password</Button>
+                </CardFooter>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </div>
 
         {/* Table Example */}
         <Card className="bg-card text-card-foreground">
@@ -344,7 +408,6 @@ export function ThemeExamples() {
           <CardContent className="gap-8 flex flex-row">
             {/* Basic Confirmation Dialog */}
             <div className="space-y-2">
-              <h3 className="text-lg font-medium">Confirmation Dialog</h3>
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant="destructive">
@@ -372,7 +435,6 @@ export function ThemeExamples() {
 
             {/* Form Dialog */}
             <div className="space-y-2">
-              <h3 className="text-lg font-medium">Form in a dialog</h3>
               <Dialog>
                 <DialogTrigger asChild>
                   <Button>
@@ -424,7 +486,6 @@ export function ThemeExamples() {
 
             {/* Custom Content Dialog */}
             <div className="space-y-2">
-              <h3 className="text-lg font-medium">Custom content</h3>
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant="outline">
