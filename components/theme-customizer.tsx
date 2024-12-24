@@ -23,15 +23,15 @@ const initialTheme = {
   'popover-foreground': '0 0% 98%',
   primary: '33.3 100% 96.5%',
   'primary-foreground': '0 0% 9%',
-  secondary: '222 39% 13%',
+  secondary: '222 65% 28%',
   'secondary-foreground': '0 0% 98%',
   muted: '227 16% 11%',
   'muted-foreground': '240 3.8% 46.1%',
-  accent: '215 28% 17%',
+  accent: '213 26% 17%',
   'accent-foreground': '220 14.3% 95.9%',
   destructive: '0 72.2% 50.6%',
   'destructive-foreground': '0 0% 98%',
-  border: '222 39% 13%',
+  border: '220 24% 17%',
   input: '222 40% 20%',
   ring: '224.4 64.3% 32.9%',
   radius: '8px',
@@ -90,7 +90,7 @@ ${Object.entries(theme)
   };
 
   return (
-    <div className='scrollbar fixed left-0 top-0 flex h-screen max-w-[1200px] flex-col overflow-y-auto overflow-x-hidden border-r border-sidebar-border bg-sidebar-background p-7 lg:min-w-[400px]'>
+    <div className='scrollbar fixed left-0 top-0 flex h-screen max-w-[450px] flex-col overflow-y-auto overflow-x-hidden border-r border-sidebar-border bg-sidebar-background p-7 lg:min-w-[400px]'>
       {openColorPicker ? (
         <div className='sticky left-0 top-0 z-0 w-[400px]'>
           <div className='absolute left-0 top-0 h-screen max-w-[400px] overflow-y-auto'>
