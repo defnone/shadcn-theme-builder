@@ -75,6 +75,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 export function ThemeExamples() {
   return (
@@ -593,6 +594,14 @@ export function ThemeExamples() {
             </div>
           </SidebarInset>
         </SidebarProvider>
+        <div className="p-4">
+          <Link
+            href="/dashboard"
+            className="text-sm text-muted-foreground underline"
+          >
+            Full screen example
+          </Link>
+        </div>
       </div>
     </div>
   );
