@@ -124,7 +124,7 @@ ${Object.entries(theme)
             <h1 className='mr-2 text-2xl font-bold'>Tailwind CSS Theme Editor</h1>
             <Dialog open={isExportOpen} onOpenChange={setIsExportOpen}>
               <DialogTrigger asChild>
-                <Button variant='outline'>Export Theme</Button>
+                <Button variant='default'>Export Theme</Button>
               </DialogTrigger>
               <DialogContent className='sm:max-w-[625px]'>
                 <DialogHeader>
