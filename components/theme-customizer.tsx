@@ -131,6 +131,13 @@ ${Object.entries(theme)
                     <code>{generateThemeCSS()}</code>
                   </pre>
                 </div>
+                <a
+                  href="https://ui.shadcn.com/docs/theming"
+                  target="_blank"
+                  className="text-sm text-primary underline ml-auto"
+                >
+                  More about theming
+                </a>
               </DialogContent>
             </Dialog>
           </div>
