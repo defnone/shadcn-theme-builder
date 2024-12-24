@@ -104,7 +104,7 @@ export function ColorPicker({
         <div className="rounded-lg ">
           <div className="grid grid-cols-2">
             <div className="p-4 ">
-              <div className="text-sm font-medium mb-2">User color</div>
+              <div className="text-sm font-medium mb-2">Custom color</div>
               <Popover open={pickerOpen} onOpenChange={setPickerOpen}>
                 <PopoverTrigger asChild>
                   <div
@@ -194,7 +194,7 @@ export function ColorPicker({
             className="h-4 w-4 rounded"
             style={{ background: customColor }}
           />
-          <span>User color</span>
+          <span>Custom color</span>
         </div>
       )}
       <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
