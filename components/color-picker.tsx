@@ -17,6 +17,8 @@ import {
   colorOptions,
   tailwindColors,
 } from "@/lib/colors";
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
 
 interface ColorPickerProps {
   value: string;
@@ -117,14 +119,45 @@ export function ColorPicker({
                   />
                 </PopoverTrigger>
                 <PopoverContent className="w-full">
-                  <HexColorPicker
-                    color={customColor}
-                    onChange={(hex) => {
-                      setCustomColor(hex);
-                      setSelectedColor(null);
-                      onChange(hexToHsl(hex));
-                    }}
-                  />
+                  <div className="space-y-4">
+                    <HexColorPicker
+                      color={customColor}
+                      onChange={(hex) => {
+                        setCustomColor(hex);
+                        setSelectedColor(null);
+                        onChange(hexToHsl(hex));
+                      }}
+                    />
+                    <div className="flex flex-col gap-2">
+                      <div className="space-y-1.5">
+                        <Label>Hex</Label>
+                        <Input
+                          value={customColor}
+                          onChange={(e) => {
+                            const hex = e.target.value;
+                            setCustomColor(hex);
+                            setSelectedColor(null);
+                            onChange(hexToHsl(hex));
+                          }}
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <Label>HSL</Label>
+                        <Input
+                          value={value}
+                          onChange={(e) => {
+                            const hsl = e.target.value;
+                            onChange(hsl);
+                            setSelectedColor(null);
+                            const [h, s, l] = hsl
+                              .split(" ")
+                              .map((v) => parseFloat(v));
+                            setCustomColor(hslToHex(h, s, l));
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </PopoverContent>
               </Popover>
             </div>
