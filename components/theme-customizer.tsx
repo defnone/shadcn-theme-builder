@@ -34,12 +34,20 @@ const initialTheme = {
   border: "222 39% 13%",
   input: "222 40% 20%",
   ring: "224.4 64.3% 32.9%",
+  radius: "8px",
+  "sidebar-background": "248 27% 6%",
+  "sidebar-foreground": "251.4 91.3% 95.5%",
+  "sidebar-primary": "223 38% 13%",
+  "sidebar-primary-foreground": "0 0% 98%",
+  "sidebar-accent": "225.9 70.7% 40.2%",
+  "sidebar-accent-foreground": "250 100% 97.6%",
+  "sidebar-border": "235 18% 13%",
+  "sidebar-ring": "217.2 91.2% 59.8%",
   "chart-1": "220 70% 50%",
   "chart-2": "160 60% 45%",
   "chart-3": "30 80% 55%",
   "chart-4": "280 65% 60%",
   "chart-5": "340 75% 55%",
-  radius: "8px",
 };
 
 export function ThemeCustomizer() {
@@ -82,17 +90,18 @@ ${Object.entries(theme)
   };
 
   return (
-    <div className="max-w-[1200px] lg:min-w-[500px] p-10 pr-5">
+    <div className="max-w-[1200px] lg:min-w-[500px] p-10 bg-sidebar-background border-r border-sidebar-border">
       {openColorPicker ? (
         <div className="sticky top-0 left-0 w-[450px] z-0">
-          <div className="absolute left-0 top-0 max-w-[450px] h-screen overflow-y-auto bg-background ">
-            <div className="sticky top-0 bg-background p-4 border-b">
+          <div className="absolute left-0 top-0 max-w-[450px] h-screen overflow-y-auto">
+            <div className="sticky top-0 p-4 border-b">
               <div className="flex justify-between items-center">
                 <h2 className="text-lg font-extrabold">
                   {variables.find((v) => v.name === openColorPicker)?.label}
                 </h2>
                 <Button
                   variant="ghost"
+                  className="text-sidebar-foreground border-sidebar-border bg-sidebar-primary hover:bg-sidebar-accent"
                   size="sm"
                   onClick={() => setOpenColorPicker(null)}
                 >
@@ -112,7 +121,7 @@ ${Object.entries(theme)
         </div>
       ) : (
         <>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center text-sidebar-foreground">
             <h1 className="text-2xl font-bold">Tailwind CSS Theme Editor</h1>
             <Dialog open={isExportOpen} onOpenChange={setIsExportOpen}>
               <DialogTrigger asChild>
@@ -142,7 +151,7 @@ ${Object.entries(theme)
             </Dialog>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sticky top-0 pt-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sticky top-0 pt-10 text-sidebar-foreground">
             {variables.map((variable) =>
               variable.name === "radius" ? (
                 <div key={variable.name} className="space-y-2.5">
