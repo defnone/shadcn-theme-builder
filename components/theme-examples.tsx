@@ -63,7 +63,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export function ThemeExamples() {
   return (
-    <div className="space-y-16 pl-7 border-l">
+    <div className="space-y-16 pl-7 border-l p-10">
       {/* Alerts */}
       <div className="flex flex-row gap-4">
         <Alert>

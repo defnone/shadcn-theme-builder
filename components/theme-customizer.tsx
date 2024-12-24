@@ -82,7 +82,7 @@ ${Object.entries(theme)
   };
 
   return (
-    <div className="max-w-[1200px] lg:min-w-[450px]  p-0">
+    <div className="max-w-[1200px] lg:min-w-[500px] p-10 pr-5">
       {openColorPicker ? (
         <div className="sticky top-0 left-0 w-[450px] z-0">
           <div className="absolute left-0 top-0 max-w-[450px] h-screen overflow-y-auto bg-background ">
