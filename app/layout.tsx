@@ -7,8 +7,8 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ShadCN Theme Customizer",
-  description: "Customize your ShadCN theme",
+  title: "TailwindCSS Tools",
+  description: "Customize your TailwindCSS theme",
 };
 
 export default function RootLayout({
