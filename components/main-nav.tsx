@@ -1,15 +1,7 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { useState } from "react"
+import { Github } from "lucide-react"
+import { ExportThemeDialog } from "./export-theme-dialog"
 
 const menuItems = [
   {
@@ -20,7 +12,6 @@ const menuItems = [
     title: "Sizing & Typography",
     href: "/sizes",
   },
-
 ]
 
 interface MainNavProps {
@@ -29,11 +20,9 @@ interface MainNavProps {
 }
 
 export function MainNav({ className, onExport }: MainNavProps) {
-  const [isExportOpen, setIsExportOpen] = useState(false);
-
   return (
     <nav className={cn("flex items-center space-x-4 lg:space-x-6 fixed top-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b h-16 px-4", className)}>
-      <div className="container flex h-16 items-center justify-between">
+      <div className="w-full flex h-16 items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <span className="font-bold text-xl">
@@ -52,34 +41,20 @@ export function MainNav({ className, onExport }: MainNavProps) {
             ))}
           </nav>
         </div>
-        
         {onExport && (
-          <Dialog open={isExportOpen} onOpenChange={setIsExportOpen}>
-            <DialogTrigger asChild>
-              <Button variant="default" size="sm">Export Theme</Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[625px]">
-              <DialogHeader>
-                <DialogTitle>Export CSS Theme</DialogTitle>
-                <DialogDescription>
-                  Copy the CSS code below to use your theme in global styles.
-                </DialogDescription>
-              </DialogHeader>
-              <div className="relative">
-                <pre className="bg-muted overflow-x-auto rounded-md p-4">
-                  <code>{onExport()}</code>
-                </pre>
-              </div>
-              <a
-                href="https://ui.shadcn.com/docs/theming"
-                target="_blank"
-                className="text-primary ml-auto text-sm underline"
-              >
-                Learn more about theming
-              </a>
-            </DialogContent>
-          </Dialog>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/defnone/shadcn-theme-builder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/60 hover:text-foreground/80 transition-colors"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+            <ExportThemeDialog onExport={onExport} />
+          </div>
         )}
+        
       </div>
     </nav>
   )
