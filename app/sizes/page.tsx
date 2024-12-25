@@ -11,29 +11,8 @@ const noto = Noto_Sans({
   weight: ['400', '500', '600', '700'],
 });
 
-interface ThemeValues {
-  [key: string]: string;
-}
-
 export default function Sizes() {
   const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        try {
-          const theme = JSON.parse(savedTheme) as ThemeValues;
-          const root = document.documentElement;
-          Object.entries(theme).forEach(([key, value]) => {
-            root.style.setProperty(`--${key}`, value);
-          });
-        } catch (e) {
-          console.error('Failed to parse theme from localStorage:', e);
-        }
-      }
-    }
-  }, []);
 
   useEffect(() => {
     setIsMobile(window.innerWidth <= 1000);
