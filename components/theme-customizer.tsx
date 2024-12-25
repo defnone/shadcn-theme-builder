@@ -2,14 +2,6 @@
 
 import * as React from 'react';
 import { Label } from '@/components/ui/label';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ColorPicker } from './color-picker';
@@ -50,9 +42,27 @@ const initialTheme = {
   'chart-5': '340 75% 55%',
 };
 
-export function ThemeCustomizer() {
+interface ThemeCustomizerProps {
+  onExport: (css: string) => void;
+}
+
+export function ThemeCustomizer({ onExport }: ThemeCustomizerProps) {
   const [theme, setTheme] = React.useState(initialTheme);
-  const [isExportOpen, setIsExportOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      try {
+        const parsedTheme = JSON.parse(saved);
+        if (typeof parsedTheme === 'object' && parsedTheme !== null) {
+          setTheme(parsedTheme);
+        }
+      } catch (e) {
+        console.error('Failed to parse theme from localStorage:', e);
+      }
+    }
+  }, []);
+
   const [openColorPicker, setOpenColorPicker] = React.useState<keyof typeof initialTheme | null>(
     null
   );
@@ -70,16 +80,17 @@ export function ThemeCustomizer() {
     Object.entries(theme).forEach(([key, value]) => {
       root.style.setProperty(`--${key}`, value);
     });
+    localStorage.setItem('theme', JSON.stringify(theme));
   }, [theme]);
 
   const handleColorChange = (name: string, value: string) => {
-    setTheme(prev => ({
+    setTheme((prev: typeof initialTheme) => ({
       ...prev,
       [name]: value,
     }));
   };
 
-  const generateThemeCSS = () => {
+  const generateThemeCSS = React.useCallback(() => {
     return `@layer base {
   :root {
 ${Object.entries(theme)
@@ -87,10 +98,18 @@ ${Object.entries(theme)
   .join('\n')}
   }
 }`;
+  }, [theme]);
+
+  React.useEffect(() => {
+    onExport(generateThemeCSS());
+  }, [theme, onExport, generateThemeCSS]);
+
+  const resetTheme = () => {
+    setTheme(initialTheme);
   };
 
   return (
-    <div className='scrollbar fixed left-0 top-0 flex h-screen max-w-[450px] flex-col overflow-y-auto overflow-x-hidden border-r border-sidebar-border bg-sidebar-background p-7 lg:min-w-[400px]'>
+    <div className='scrollbar border-sidebar-border bg-sidebar-background fixed left-0 top-0 flex h-screen max-w-[450px] flex-col overflow-y-auto overflow-x-hidden border-r p-7 pt-20 lg:min-w-[400px]'>
       {openColorPicker ? (
         <div className='sticky left-0 top-0 z-0 w-[400px]'>
           <div className='absolute left-0 top-0 h-screen max-w-[400px] overflow-y-auto'>
@@ -120,35 +139,7 @@ ${Object.entries(theme)
         </div>
       ) : (
         <>
-          <div className='flex max-w-full items-center justify-between text-sidebar-foreground'>
-            <h1 className='mr-2 text-2xl font-bold'>Tailwind CSS Theme Editor</h1>
-            <Dialog open={isExportOpen} onOpenChange={setIsExportOpen}>
-              <DialogTrigger asChild>
-                <Button variant='default'>Export Theme</Button>
-              </DialogTrigger>
-              <DialogContent className='sm:max-w-[625px]'>
-                <DialogHeader>
-                  <DialogTitle>Export Theme CSS</DialogTitle>
-                  <DialogDescription>
-                    Copy the CSS below to use your custom theme in your global styles.
-                  </DialogDescription>
-                </DialogHeader>
-                <div className='relative'>
-                  <pre className='overflow-x-auto rounded-md bg-muted p-4'>
-                    <code>{generateThemeCSS()}</code>
-                  </pre>
-                </div>
-                <a
-                  href='https://ui.shadcn.com/docs/theming'
-                  target='_blank'
-                  className='ml-auto text-sm text-primary underline'>
-                  More about theming
-                </a>
-              </DialogContent>
-            </Dialog>
-          </div>
-
-          <div className='grid grid-cols-1 gap-6 pt-10 text-sidebar-foreground lg:grid-cols-2'>
+          <div className='text-sidebar-foreground grid grid-cols-1 gap-6 pt-4 lg:grid-cols-2'>
             {variables.map(variable =>
               variable.name === 'radius' ? (
                 <React.Fragment key={variable.name}>
@@ -180,6 +171,11 @@ ${Object.entries(theme)
                 </div>
               )
             )}
+          </div>
+          <div className='mt-8 flex justify-center'>
+            <Button variant='destructive' onClick={resetTheme} className='w-full max-w-[200px]'>
+              Reset Theme
+            </Button>
           </div>
         </>
       )}
