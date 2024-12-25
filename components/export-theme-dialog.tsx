@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 interface ExportThemeDialogProps {
   onExport: () => string
@@ -15,6 +15,13 @@ interface ExportThemeDialogProps {
 
 export function ExportThemeDialog({ onExport }: ExportThemeDialogProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const [exportedCSS, setExportedCSS] = useState('')
+
+  useEffect(() => {
+    if (onExport) {
+      setExportedCSS(onExport())
+    }
+  }, [onExport])
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -30,7 +37,7 @@ export function ExportThemeDialog({ onExport }: ExportThemeDialogProps) {
         </DialogHeader>
         <div className="relative">
           <pre className="bg-muted overflow-x-auto rounded-md p-4">
-            <code>{onExport()}</code>
+            <code>{exportedCSS}</code>
           </pre>
         </div>
         <a
