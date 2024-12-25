@@ -68,108 +68,128 @@ export function ThemeExamples() {
   return (
     <div className='flex flex-col space-y-16 py-10 pl-[500px] pr-10'>
       {/* Alerts */}
-      <div className='flex flex-row gap-4'>
-        <Alert>
-          <Info className='h-4 w-4' />
-          <AlertTitle>Information</AlertTitle>
-          <AlertDescription>This is an information alert using default colors.</AlertDescription>
-        </Alert>
-        <Alert variant='destructive'>
-          <AlertTriangle className='h-4 w-4' />
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription>
-            This is a destructive alert showing destructive colors.
-          </AlertDescription>
-        </Alert>
-      </div>
+      <section>
+        <h2 className='mb-4 text-2xl font-semibold'>Alerts</h2>
+        <div className='flex flex-row gap-4'>
+          <Alert>
+            <Info className='h-4 w-4' />
+            <AlertTitle>Information</AlertTitle>
+            <AlertDescription>This is an information alert using default colors.</AlertDescription>
+          </Alert>
+          <Alert variant='destructive'>
+            <AlertTriangle className='h-4 w-4' />
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>
+              This is a destructive alert showing destructive colors.
+            </AlertDescription>
+          </Alert>
+        </div>
+      </section>
 
       {/* Text on Background Example */}
-      <div className=''>
-        <h1 className='mb-4 text-4xl font-bold'>Sample Text on Background</h1>
-        <h2 className='mb-2 text-2xl font-semibold'>This is a subtitle</h2>
-        <p className='mb-4'>
-          This is an example of regular text on the main background. It uses the default foreground
-          color for text and the background color for the container. This helps visualize how
-          changing these colors affects the overall look of your content.
+      <section>
+        <h2 className='mb-4 text-2xl font-extrabold'>Text on Background</h2>
+        <h1 className='mb-4 text-4xl font-bold'>
+          The Rise of Artificial Intelligence in Healthcare
+        </h1>
+        <h3 className='mb-2 text-2xl font-semibold'>
+          Transforming Patient Care Through Innovation
+        </h3>
+        <p className='mb-4 leading-relaxed'>
+          Artificial Intelligence (AI) is revolutionizing the healthcare industry, offering
+          unprecedented opportunities to improve patient care, streamline medical processes, and
+          enhance diagnostic accuracy. From early disease detection to personalized treatment plans,
+          AI-powered solutions are becoming increasingly integral to modern healthcare delivery.
         </p>
-        <p className='mb-4'>
-          Here&apos;s an example of a{' '}
+        <p className='mb-4 leading-relaxed'>
+          One of the most promising applications is in medical imaging, where{' '}
           <a href='#' className='text-primary hover:underline'>
-            primary colored link
-          </a>
-          .
+            deep learning algorithms
+          </a>{' '}
+          can detect subtle patterns that might escape the human eye. These systems have shown
+          remarkable accuracy in identifying potential malignancies and other abnormalities in
+          X-rays, MRIs, and CT scans.
         </p>
         <p className='text-muted-foreground'>
-          This text uses the muted-foreground color, which is often used for less important or
-          supplementary information.
+          Published on October 15, 2023 | Written by Dr. Sarah Johnson | 5 min read
         </p>
-      </div>
+      </section>
 
       {/* Badges */}
-      <div className='flex flex-col gap-4'>
-        <div className='flex flex-wrap gap-2'>
-          <Badge>Default Badge</Badge>
-          <Badge variant='secondary'>Secondary Badge</Badge>
-          <Badge variant='destructive'>Destructive Badge</Badge>
-          <Badge variant='outline'>Outline Badge</Badge>
+      <section>
+        <h2 className='mb-4 text-2xl font-extrabold'>Badges</h2>
+        <div className='flex flex-col gap-4'>
+          <div className='flex flex-wrap gap-2'>
+            <Badge>Default Badge</Badge>
+            <Badge variant='secondary'>Secondary Badge</Badge>
+            <Badge variant='destructive'>Destructive Badge</Badge>
+            <Badge variant='outline'>Outline Badge</Badge>
+          </div>
         </div>
-      </div>
-      {/* Basic Card Example */}
-      <div className='grid gap-4'>
-        <div className='grid grid-cols-1 gap-4'>
-          <Card className='bg-card text-card-foreground'>
-            <CardHeader>
-              <CardTitle>Card Title</CardTitle>
-              <CardDescription>
-                This is a basic card example showing card and card-foreground colors.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>Card content demonstrating the default text color.</p>
-            </CardContent>
-            <CardFooter className='flex flex-wrap gap-8'>
-              <div className='flex gap-2'>
-                <Button>Primary Button</Button>
-                <Button disabled>Primary Button</Button>
-              </div>
-              <div className='flex gap-2'>
-                <Button variant='secondary'>Secondary Button</Button>
-                <Button variant='secondary' disabled>
-                  Secondary Button
-                </Button>
-              </div>
-              <div className='flex gap-2'>
-                <Button variant='outline'>Outline Button</Button>
-                <Button variant='outline' disabled>
-                  Outline Button
-                </Button>
-              </div>
-              <div className='flex gap-2'>
-                <Button variant='ghost'>Ghost Button</Button>
-                <Button variant='ghost' disabled>
-                  Ghost Button
-                </Button>
-              </div>
-              <div className='space-y-2'>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant='outline'>Open Menu</Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>Profile</DropdownMenuItem>
-                    <DropdownMenuItem>Billing</DropdownMenuItem>
-                    <DropdownMenuItem>Team</DropdownMenuItem>
-                    <DropdownMenuItem>Subscription</DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            </CardFooter>
-          </Card>
-        </div>
+      </section>
 
-        {/* Status Cards */}
+      {/* Basic Card Example */}
+      <section>
+        <h2 className='mb-4 text-2xl font-extrabold'>Basic Card</h2>
+        <div className='grid gap-4'>
+          <div className='grid grid-cols-1 gap-4'>
+            <Card className='bg-card text-card-foreground'>
+              <CardHeader>
+                <CardTitle>Card Title</CardTitle>
+                <CardDescription>
+                  This is a basic card example showing card and card-foreground colors.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p>Card content demonstrating the default text color.</p>
+              </CardContent>
+              <CardFooter className='flex flex-wrap gap-8'>
+                <div className='flex gap-2'>
+                  <Button>Primary Button</Button>
+                  <Button disabled>Primary Button</Button>
+                </div>
+                <div className='flex gap-2'>
+                  <Button variant='secondary'>Secondary Button</Button>
+                  <Button variant='secondary' disabled>
+                    Secondary Button
+                  </Button>
+                </div>
+                <div className='flex gap-2'>
+                  <Button variant='outline'>Outline Button</Button>
+                  <Button variant='outline' disabled>
+                    Outline Button
+                  </Button>
+                </div>
+                <div className='flex gap-2'>
+                  <Button variant='ghost'>Ghost Button</Button>
+                  <Button variant='ghost' disabled>
+                    Ghost Button
+                  </Button>
+                </div>
+                <div className='space-y-2'>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant='outline'>Open Menu</Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>Profile</DropdownMenuItem>
+                      <DropdownMenuItem>Billing</DropdownMenuItem>
+                      <DropdownMenuItem>Team</DropdownMenuItem>
+                      <DropdownMenuItem>Subscription</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              </CardFooter>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Status Cards */}
+      <section>
+        <h2 className='mb-4 text-2xl font-extrabold'>Main Colors as Cards</h2>
         <div className='grid gap-4 md:grid-cols-3'>
           <Card className='bg-primary text-primary-foreground'>
             <CardHeader>
@@ -200,8 +220,11 @@ export function ThemeExamples() {
             <CardContent>Example of muted background color and muted text color</CardContent>
           </Card>
         </div>
+      </section>
 
-        {/* Accent Card */}
+      {/* Accent Card */}
+      <section>
+        <h2 className='mb-4 text-2xl font-extrabold'>Accent Card</h2>
         <div className='border-border flex w-full flex-row rounded-lg border p-0.5 text-[0.97rem]'>
           <div className='bg-background w-1/3 px-8 py-8'>
             <div className='bg-accent text-accent-foreground rounded-md p-4 text-center'>
@@ -219,8 +242,11 @@ export function ThemeExamples() {
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Form Example and Table Example */}
+      {/* Form Example and Table Example */}
+      <section>
+        <h2 className='mb-4 text-2xl font-extrabold'>Forms</h2>
         <div className='grid grid-cols-2 gap-4'>
           <Card className='bg-card text-card-foreground'>
             <CardHeader>
@@ -340,8 +366,11 @@ export function ThemeExamples() {
             </TabsContent>
           </Tabs>
         </div>
+      </section>
 
-        {/* Table Example */}
+      {/* Table Example */}
+      <section>
+        <h2 className='mb-4 text-2xl font-extrabold'>Table</h2>
         <Card className='bg-card text-card-foreground'>
           <CardHeader>
             <CardTitle>Users Table</CardTitle>
@@ -399,8 +428,11 @@ export function ThemeExamples() {
             </Table>
           </CardContent>
         </Card>
+      </section>
 
-        {/* Dialogs Examples */}
+      {/* Dialogs Examples */}
+      <section>
+        <h2 className='mb-4 text-2xl font-extrabold'>Dialogs</h2>
         <Card className='bg-card text-card-foreground'>
           <CardHeader>
             <CardTitle>Dialogs Examples</CardTitle>
@@ -540,44 +572,49 @@ export function ThemeExamples() {
             </div>
           </CardContent>
         </Card>
-      </div>
-      <div className='border-border w-full rounded-lg border p-0.5'>
-        <SidebarProvider>
-          <AppSidebar />
-          <SidebarInset>
-            <header className='flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12'>
-              <div className='flex items-center gap-2 px-4'>
-                <SidebarTrigger className='-ml-1' />
-                <Separator orientation='vertical' className='mr-2 h-4' />
-                <Breadcrumb>
-                  <BreadcrumbList>
-                    <BreadcrumbItem className='hidden md:block'>
-                      <BreadcrumbLink href='#'>Building Your Application</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator className='hidden md:block' />
-                    <BreadcrumbItem>
-                      <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                    </BreadcrumbItem>
-                  </BreadcrumbList>
-                </Breadcrumb>
+      </section>
+
+      {/* Sidebar Example */}
+      <section>
+        <h2 className='mb-4 text-2xl font-extrabold'>Sidebar</h2>
+        <div className='border-border w-full rounded-lg border p-0.5'>
+          <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset>
+              <header className='flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12'>
+                <div className='flex items-center gap-2 px-4'>
+                  <SidebarTrigger className='-ml-1' />
+                  <Separator orientation='vertical' className='mr-2 h-4' />
+                  <Breadcrumb>
+                    <BreadcrumbList>
+                      <BreadcrumbItem className='hidden md:block'>
+                        <BreadcrumbLink href='#'>Building Your Application</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator className='hidden md:block' />
+                      <BreadcrumbItem>
+                        <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                      </BreadcrumbItem>
+                    </BreadcrumbList>
+                  </Breadcrumb>
+                </div>
+              </header>
+              <div className='flex flex-1 flex-col gap-4 p-4 pt-0'>
+                <div className='grid auto-rows-min gap-4 md:grid-cols-3'>
+                  <div className='bg-muted/50 aspect-video rounded-xl' />
+                  <div className='bg-muted/50 aspect-video rounded-xl' />
+                  <div className='bg-muted/50 aspect-video rounded-xl' />
+                </div>
+                <div className='bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min' />
               </div>
-            </header>
-            <div className='flex flex-1 flex-col gap-4 p-4 pt-0'>
-              <div className='grid auto-rows-min gap-4 md:grid-cols-3'>
-                <div className='bg-muted/50 aspect-video rounded-xl' />
-                <div className='bg-muted/50 aspect-video rounded-xl' />
-                <div className='bg-muted/50 aspect-video rounded-xl' />
-              </div>
-              <div className='bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min' />
-            </div>
-          </SidebarInset>
-        </SidebarProvider>
-        <div className='p-4'>
-          <Link href='/dashboard' className='text-muted-foreground text-sm underline'>
-            Full screen example
-          </Link>
+            </SidebarInset>
+          </SidebarProvider>
+          <div className='p-4'>
+            <Link href='/dashboard' className='text-muted-foreground text-sm underline'>
+              Full screen example
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
