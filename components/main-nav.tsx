@@ -2,6 +2,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Github } from "lucide-react"
 import { ExportThemeDialog } from "./export-theme-dialog"
+import { usePathname } from "next/navigation"
 
 const menuItems = [
   {
@@ -12,6 +13,10 @@ const menuItems = [
     title: "Sizing & Typography",
     href: "/sizes",
   },
+  {
+    title: "Colors",
+    href: "/colors",
+  },
 ]
 
 interface MainNavProps {
@@ -20,6 +25,7 @@ interface MainNavProps {
 }
 
 export function MainNav({ className, onExport }: MainNavProps) {
+  const pathname = usePathname();
   return (
     <nav className={cn("flex items-center space-x-4 lg:space-x-6 fixed top-0 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50 border-b h-16 px-4", className)}>
       <div className="w-full flex h-16 items-center justify-between">
@@ -34,7 +40,7 @@ export function MainNav({ className, onExport }: MainNavProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
+                className={cn("transition-colors hover:text-foreground/80 text-foreground/60", pathname === item.href && "text-foreground")}
               >
                 {item.title}
               </Link>
@@ -51,6 +57,7 @@ export function MainNav({ className, onExport }: MainNavProps) {
             >
               <Github className="h-5 w-5" />
             </a>
+            
             <ExportThemeDialog onExport={onExport} />
           </div>
         )}
