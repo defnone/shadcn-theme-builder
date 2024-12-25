@@ -28,6 +28,84 @@ export default {
     {
       pattern: /^leading-/,
     },
+    {
+      pattern: /^bg-slate-/,
+    },
+    {
+      pattern: /^bg-gray-/,
+    },
+    {
+      pattern: /^bg-zinc-/,
+    },
+    {
+      pattern: /^bg-neutral-/,
+    },
+    {
+      pattern: /^bg-stone-/,
+    },
+    {
+      pattern: /^bg-red-/,
+    },
+    {
+      pattern: /^bg-orange-/,
+    },
+    {
+      pattern: /^bg-amber-/,
+    },
+    {
+      pattern: /^bg-yellow-/,
+    },
+    {
+      pattern: /^bg-lime-/,
+    },
+    {
+      pattern: /^bg-green-/,
+    },
+    {
+      pattern: /^bg-emerald-/,
+    },
+    {
+      pattern: /^bg-teal-/,
+    },
+    {
+      pattern: /^bg-cyan-/,
+    },
+    {
+      pattern: /^bg-sky-/,
+    },
+    {
+      pattern: /^bg-blue-/,
+    },
+    {
+      pattern: /^bg-indigo-/,
+    },
+    {
+      pattern: /^bg-violet-/,
+    },
+    {
+      pattern: /^bg-purple-/,
+    },
+    {
+      pattern: /^bg-fuchsia-/,
+    },
+    {
+      pattern: /^bg-pink-/,
+    },
+    {
+      pattern: /^bg-rose-/,
+    },
+    {
+      pattern: /^hover:bg-/,
+    },
+    {
+      pattern: /^text-.*-\d+$/,
+    },
+    {
+      pattern: /^focus-visible:outline-.*-\d+$/,
+    },
+    {
+      pattern: /^hover:bg-.*-\d+$/,
+    },
   ],
   theme: {
   	extend: {
