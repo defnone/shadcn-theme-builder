@@ -52,7 +52,7 @@ export default function Colors() {
   return (
     <div className="bg-background min-h-screen w-full pt-15">
       <MainNav />
-      <div className='mt-10 h-px w-full bg-zinc-950'></div>
+      <div className='mt-10 h-px w-full bg-border'></div>
       
       <div className="p-8">
         {/* Itten Color Generator */}
@@ -102,7 +102,7 @@ export default function Colors() {
 
               
             </div>
-            <div className='h-px w-full bg-zinc-950'>{currentHarmony.description}</div>
+            <div className=' w-full '>{currentHarmony.description}</div>
             <div className="grid grid-cols-4 gap-8">
               {currentPalette.map((colorName, index) => (
                 <div key={index} className="space-y-2">
