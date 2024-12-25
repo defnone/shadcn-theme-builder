@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate"
+import typography from '@tailwindcss/typography';
 
 export default {
     darkMode: ["class"],
@@ -8,8 +9,108 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    {
+      pattern: /^gap-/,
+    },
+    {
+      pattern: /^rounded-/,
+    },
+    {
+      pattern: /^p-/,
+    },
+    {
+      pattern: /^text-/,
+    },
+    {
+      pattern: /^tracking-/,
+    },
+    {
+      pattern: /^leading-/,
+    },
+  ],
   theme: {
   	extend: {
+  		fontSize: {
+  			xs: ['0.75rem', { lineHeight: '1rem' }],
+  			sm: ['0.875rem', { lineHeight: '1.25rem' }],
+  			base: ['1rem', { lineHeight: '1.5rem' }],
+  			lg: ['1.125rem', { lineHeight: '1.75rem' }],
+  			xl: ['1.25rem', { lineHeight: '1.75rem' }],
+  			'2xl': ['1.5rem', { lineHeight: '2rem' }],
+  			'3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+  			'4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+  			'5xl': ['3rem', { lineHeight: '1' }],
+  			'6xl': ['3.75rem', { lineHeight: '1' }],
+  			'7xl': ['4.5rem', { lineHeight: '1' }],
+  			'8xl': ['6rem', { lineHeight: '1' }],
+  			'9xl': ['8rem', { lineHeight: '1' }],
+  		},
+  		typography: {
+  			DEFAULT: {
+  				css: {
+  					maxWidth: '65ch',
+  					color: 'hsl(var(--foreground))',
+  					'[class~="lead"]': {
+  						color: 'hsl(var(--foreground))',
+  					},
+  					a: {
+  						color: 'hsl(var(--primary))',
+  						'&:hover': {
+  							color: 'hsl(var(--primary))',
+  						},
+  					},
+  					strong: {
+  						color: 'hsl(var(--foreground))',
+  					},
+  					'ol > li::marker': {
+  						color: 'hsl(var(--foreground))',
+  					},
+  					'ul > li::marker': {
+  						color: 'hsl(var(--foreground))',
+  					},
+  					hr: {
+  						borderColor: 'hsl(var(--border))',
+  					},
+  					blockquote: {
+  						color: 'hsl(var(--foreground))',
+  						borderLeftColor: 'hsl(var(--border))',
+  					},
+  					h1: {
+  						color: 'hsl(var(--foreground))',
+  					},
+  					h2: {
+  						color: 'hsl(var(--foreground))',
+  					},
+  					h3: {
+  						color: 'hsl(var(--foreground))',
+  					},
+  					h4: {
+  						color: 'hsl(var(--foreground))',
+  					},
+  					'figure figcaption': {
+  						color: 'hsl(var(--muted-foreground))',
+  					},
+  					code: {
+  						color: 'hsl(var(--foreground))',
+  					},
+  					'a code': {
+  						color: 'hsl(var(--foreground))',
+  					},
+  					pre: {
+  						color: 'hsl(var(--foreground))',
+  						backgroundColor: 'hsl(var(--muted))',
+  					},
+  					thead: {
+  						color: 'hsl(var(--foreground))',
+  						borderBottomColor: 'hsl(var(--border))',
+  					},
+  					'tbody tr': {
+  						borderBottomColor: 'hsl(var(--border))',
+  					},
+  				},
+  			},
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -72,5 +173,5 @@ export default {
   		}
   	}
   },
-  plugins: [animate],
+  plugins: [animate, typography],
 } satisfies Config;
