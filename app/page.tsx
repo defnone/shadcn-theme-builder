@@ -10,6 +10,21 @@ export default function Page() {
   const [themeCSS, setThemeCSS] = useState('');
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      try {
+        const theme = JSON.parse(savedTheme);
+        const cssString = Object.entries(theme)
+          .map(([key, val]) => `  --${key}: ${val};`)
+          .join('\n');
+        setThemeCSS(`:root {\n${cssString}\n}`);
+      } catch (e) {
+        console.error('Failed to parse theme from localStorage:', e);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1000);
     };
