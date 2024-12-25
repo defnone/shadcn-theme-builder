@@ -5,8 +5,12 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ColorPicker } from './color-picker';
+import { ThemeImporter } from './theme-importer';
+import { useTheme } from './theme-provider';
 
-const initialTheme = {
+export type Theme = Record<string, string>;
+
+export const initialTheme: Theme = {
   background: '223 39% 7%',
   foreground: '0 0% 89.8%',
   card: '219 44% 8%',
@@ -43,69 +47,74 @@ const initialTheme = {
 };
 
 interface ThemeCustomizerProps {
-  onExport: (css: string) => void;
+  onExport?: (css: string) => void;
 }
 
 export function ThemeCustomizer({ onExport }: ThemeCustomizerProps) {
-  const [theme, setTheme] = React.useState(initialTheme);
+  const { theme, setTheme } = useTheme();
+  const [openColorPicker, setOpenColorPicker] = React.useState<string | null>(null);
 
   React.useEffect(() => {
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      try {
-        const parsedTheme = JSON.parse(saved);
-        if (typeof parsedTheme === 'object' && parsedTheme !== null) {
-          setTheme(parsedTheme);
-        }
-      } catch (e) {
-        console.error('Failed to parse theme from localStorage:', e);
-      }
+    if (!theme && typeof window !== 'undefined' && !localStorage.getItem('theme')) {
+      setTheme(initialTheme);
     }
-  }, []);
-
-  const [openColorPicker, setOpenColorPicker] = React.useState<keyof typeof initialTheme | null>(
-    null
-  );
-  const variables = Object.entries(theme).map(([name, value]) => ({
-    name,
-    value,
-    label: name
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' '),
-  }));
+  }, [theme, setTheme]);
 
   React.useEffect(() => {
-    const root = document.documentElement;
-    Object.entries(theme).forEach(([key, value]) => {
-      root.style.setProperty(`--${key}`, value);
-    });
-    localStorage.setItem('theme', JSON.stringify(theme));
+    if (theme && onExport) {
+      const cssString = Object.entries(theme)
+        .map(([key, val]) => `  --${key}: ${val};`)
+        .join('\n');
+      onExport(`:root {\n${cssString}\n}`);
+    }
+  }, [theme, onExport]);
+
+  const variables = React.useMemo(() => {
+    if (!theme) return [];
+    return Object.entries(initialTheme).map(([name, value]) => ({
+      name,
+      value: theme[name] || value,
+      label: name
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' '),
+    }));
   }, [theme]);
 
   const handleColorChange = (name: string, value: string) => {
-    setTheme((prev: typeof initialTheme) => ({
-      ...prev,
-      [name]: value,
-    }));
+    if (theme) {
+      const newTheme = { ...theme, [name]: value };
+      setTheme(newTheme);
+      if (onExport) {
+        const cssString = Object.entries(newTheme)
+          .map(([key, val]) => `  --${key}: ${val};`)
+          .join('\n');
+        onExport(`:root {\n${cssString}\n}`);
+      }
+    }
   };
 
-  const generateThemeCSS = React.useCallback(() => {
-    return `@layer base {
-  :root {
-${Object.entries(theme)
-  .map(([key, value]) => `    --${key}: ${value};`)
-  .join('\n')}
-  }
-}`;
-  }, [theme]);
-
-  React.useEffect(() => {
-    onExport(generateThemeCSS());
-  }, [theme, onExport, generateThemeCSS]);
+  const handleImport = React.useCallback(
+    (importedTheme: Theme) => {
+      setTheme(importedTheme);
+      if (onExport) {
+        const cssString = Object.entries(importedTheme)
+          .map(([key, value]) => `  --${key}: ${value};`)
+          .join('\n');
+        onExport(`:root {\n${cssString}\n}`);
+      }
+    },
+    [onExport, setTheme]
+  );
 
   const resetTheme = () => {
     setTheme(initialTheme);
+    if (onExport) {
+      const cssString = Object.entries(initialTheme)
+        .map(([key, value]) => `  --${key}: ${value};`)
+        .join('\n');
+      onExport(`:root {\n${cssString}\n}`);
+    }
   };
 
   return (
@@ -128,12 +137,14 @@ ${Object.entries(theme)
               </div>
             </div>
             <div className='p-4'>
-              <ColorPicker
-                isColorPickerMode={true}
-                setIsColorPickerMode={() => setOpenColorPicker(null)}
-                value={theme[openColorPicker]}
-                onChange={value => handleColorChange(openColorPicker, value)}
-              />
+              {theme && openColorPicker && (
+                <ColorPicker
+                  isColorPickerMode={true}
+                  setIsColorPickerMode={() => setOpenColorPicker(null)}
+                  value={theme[openColorPicker]}
+                  onChange={value => handleColorChange(openColorPicker, value)}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -147,7 +158,7 @@ ${Object.entries(theme)
                     <Label className='text-sm font-bold'>{variable.label}</Label>
                     <Input
                       type='number'
-                      value={parseFloat(theme[variable.name])}
+                      value={parseFloat(variable.value)}
                       onChange={e => handleColorChange(variable.name, e.target.value + 'px')}
                       step={1}
                       min={0}
@@ -162,9 +173,7 @@ ${Object.entries(theme)
                   <Label className='text-sm font-bold'>{variable.label}</Label>
                   <ColorPicker
                     isColorPickerMode={false}
-                    setIsColorPickerMode={() =>
-                      setOpenColorPicker(variable.name as keyof typeof initialTheme)
-                    }
+                    setIsColorPickerMode={() => setOpenColorPicker(variable.name)}
                     value={variable.value}
                     onChange={value => handleColorChange(variable.name, value)}
                   />
@@ -172,10 +181,11 @@ ${Object.entries(theme)
               )
             )}
           </div>
-          <div className='mt-8 flex justify-center'>
-            <Button variant='destructive' onClick={resetTheme} className='w-full max-w-[200px]'>
-              Reset Theme
+          <div className='mt-8 flex justify-center gap-4'>
+            <Button variant='destructive' onClick={resetTheme} className='w-full max-w-[400px]'>
+              Reset
             </Button>
+            <ThemeImporter onImport={handleImport} />
           </div>
         </>
       )}
