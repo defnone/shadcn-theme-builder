@@ -1,8 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { ArrowLeftIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 import { Noto_Sans } from 'next/font/google';
 import { GridSettings } from './components/grid-settings';
 import { TypographySettings } from './components/typography-settings';
@@ -19,7 +16,6 @@ interface ThemeValues {
 }
 
 export default function Sizes() {
-  const router = useRouter();
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
