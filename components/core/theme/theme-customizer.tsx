@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ColorPicker } from './color-picker';
+import { ColorPicker } from '@/components/shared/color-picker';
 import { ThemeImporter } from './theme-importer';
 import { useTheme } from './theme-provider';
 

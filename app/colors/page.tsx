@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { MainNav } from '@/components/main-nav';
-import { Dialog } from './components/Dialog';
-import { TypographyPoster } from './components/TypographyPoster';
-import { harmonies, colors, shades } from './lib/constants';
-import { generatePalette, getClosestColor } from './lib/utils';
+import { MainNav } from '@/components/core/layout/main-nav';
+import { Dialog } from '@/components/core/colors/Dialog';
+import { TypographyPoster } from '@/components/core/colors/TypographyPoster';
+import { harmonies, colors, shades } from '@/lib/colors/constants';
+import { generatePalette, getClosestColor } from '@/lib/colors/utils';
 
 export default function Colors() {
   const [isMobile, setIsMobile] = useState(false);

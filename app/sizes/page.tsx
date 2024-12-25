@@ -1,10 +1,10 @@
 'use client';
 
 import { Noto_Sans } from 'next/font/google';
-import { GridSettings } from './components/grid-settings';
-import { TypographySettings } from './components/typography-settings';
+import { GridSettings } from '@/components/core/sizes/grid-settings';
+import { TypographySettings } from '@/components/core/sizes/typography-settings';
 import { useState, useEffect } from 'react';
-import { MainNav } from '@/components/main-nav';
+import { MainNav } from '@/components/core/layout/main-nav';
 
 const noto = Noto_Sans({
   subsets: ['latin', 'cyrillic'],

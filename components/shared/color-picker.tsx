@@ -7,8 +7,8 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { ColorName, ColorOption, ShadeNumber, colorOptions, tailwindColors } from '@/lib/colors';
-import { Label } from './ui/label';
-import { Input } from './ui/input';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 interface ColorPickerProps {
   value: string;

@@ -51,7 +51,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { AppSidebar } from '@/components/app-sidebar';
+import { AppSidebar } from '@/components/core/layout/app-sidebar';
 import {
   Breadcrumb,
   BreadcrumbItem,

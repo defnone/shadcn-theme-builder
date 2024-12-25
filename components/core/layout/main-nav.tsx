@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Github } from "lucide-react"
-import { ExportThemeDialog } from "./export-theme-dialog"
+import { ExportThemeDialog } from "@/components/core/theme/export-theme-dialog"
 import { usePathname } from "next/navigation"
 
 const menuItems = [

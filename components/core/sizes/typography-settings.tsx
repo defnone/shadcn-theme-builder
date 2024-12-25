@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import SliderTicks from '@/components/ticks-slider';
+import SliderTicks from '@/components/shared/ticks-slider';
 
 type FontSize =
   | 'xs'

@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import { ThemeCustomizer } from "@/components/theme-customizer";
-import { ThemeExamples } from "@/components/theme-examples";
-import { MainNav } from "@/components/main-nav";
+import { ThemeCustomizer } from "@/components/core/theme/theme-customizer";
+import { ThemeExamples } from "@/components/core/theme/theme-examples";
+import { MainNav } from "@/components/core/layout/main-nav";
 
 export default function Page() {
   const [isMobile, setIsMobile] = useState(false);

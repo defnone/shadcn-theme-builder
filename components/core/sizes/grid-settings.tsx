@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import SliderTicks from '@/components/ticks-slider';
+import SliderTicks from '@/components/shared/ticks-slider';
 
 // Constants for grid settings
 const gapOptions = [
