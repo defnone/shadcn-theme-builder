@@ -51,22 +51,25 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { AppSidebar } from '@/components/core/layout/app-sidebar';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import { Separator } from '@/components/ui/separator';
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+
+import { ApplicationExample } from './application-example';
 import Link from 'next/link';
 
 export function ThemeExamples() {
   return (
     <div className='flex flex-col space-y-16 py-10 pl-[500px] pr-10'>
+      {/* Application Example */}
+      <section>
+        <div className='w-full rounded-lg border border-border p-0.5'>
+          <ApplicationExample />
+          <div className='p-4'>
+            <Link href='/dashboard' className='text-sm text-muted-foreground underline'>
+              Full screen example
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Alerts */}
       <section>
         <h2 className='mb-4 text-2xl font-semibold'>Alerts</h2>
@@ -88,7 +91,6 @@ export function ThemeExamples() {
 
       {/* Text on Background Example */}
       <section>
-        <h2 className='mb-4 text-2xl font-extrabold'>Text on Background</h2>
         <h1 className='mb-4 text-4xl font-bold'>
           The Rise of Artificial Intelligence in Healthcare
         </h1>
@@ -225,19 +227,19 @@ export function ThemeExamples() {
       {/* Accent Card */}
       <section>
         <h2 className='mb-4 text-2xl font-extrabold'>Accent Card</h2>
-        <div className='border-border flex w-full flex-row rounded-lg border p-0.5 text-[0.97rem]'>
-          <div className='bg-background w-1/3 px-8 py-8'>
-            <div className='bg-accent text-accent-foreground rounded-md p-4 text-center'>
+        <div className='flex w-full flex-row rounded-lg border border-border p-0.5 text-[0.97rem]'>
+          <div className='w-1/3 bg-background px-8 py-8'>
+            <div className='rounded-md bg-accent p-4 text-center text-accent-foreground'>
               Accent on background
             </div>
           </div>
-          <div className='bg-card w-1/3 px-8 py-8'>
-            <div className='bg-accent text-accent-foreground rounded-md p-4 text-center'>
+          <div className='w-1/3 bg-card px-8 py-8'>
+            <div className='rounded-md bg-accent p-4 text-center text-accent-foreground'>
               Accent on card
             </div>
           </div>
-          <div className='bg-popover w-1/3 px-8 py-8'>
-            <div className='bg-accent text-accent-foreground rounded-md p-4 text-center'>
+          <div className='w-1/3 bg-popover px-8 py-8'>
+            <div className='rounded-md bg-accent p-4 text-center text-accent-foreground'>
               Accent on popover
             </div>
           </div>
@@ -262,7 +264,7 @@ export function ThemeExamples() {
                   id='username'
                   placeholder='Enter your username'
                   value='PedroDuarte'
-                  className='ring-ring ring-offset-background ring-2 ring-offset-2'
+                  className='ring-2 ring-ring ring-offset-2 ring-offset-background'
                   onChange={e => console.log(e.target.value)}
                 />
               </div>
@@ -275,7 +277,7 @@ export function ThemeExamples() {
                   placeholder='example@example.com'
                   className='border-destructive'
                 />
-                <p className='text-destructive text-sm'>Please enter a valid email</p>
+                <p className='text-sm text-destructive'>Please enter a valid email</p>
               </div>
 
               <div className='space-y-2'>
@@ -537,11 +539,11 @@ export function ThemeExamples() {
                       <Label>Color scheme</Label>
                       <div className='flex gap-2'>
                         <Button variant='outline' className='w-full'>
-                          <span className='bg-primary mr-2 h-4 w-4 rounded-full' />
+                          <span className='mr-2 h-4 w-4 rounded-full bg-primary' />
                           Blue
                         </Button>
                         <Button variant='outline' className='w-full'>
-                          <span className='bg-destructive mr-2 h-4 w-4 rounded-full' />
+                          <span className='mr-2 h-4 w-4 rounded-full bg-destructive' />
                           Red
                         </Button>
                         <Button variant='outline' className='w-full'>
@@ -572,210 +574,6 @@ export function ThemeExamples() {
             </div>
           </CardContent>
         </Card>
-      </section>
-
-    
-
-      {/* Application Example */}
-      <section>
-        <h2 className='mb-4 text-2xl font-extrabold'>Application Example</h2>
-        <div className='border-border w-full rounded-lg border p-0.5'>
-          <SidebarProvider>
-            <AppSidebar />
-            <SidebarInset>
-              <header className='flex h-16 shrink-0 items-center justify-between border-b px-4'>
-                <div className='flex items-center gap-2'>
-                  <SidebarTrigger className='-ml-1' />
-                  <Separator orientation='vertical' className='h-4' />
-                  <Breadcrumb>
-                    <BreadcrumbList>
-                      <BreadcrumbItem>
-                        <BreadcrumbLink href='#'>Dashboard</BreadcrumbLink>
-                      </BreadcrumbItem>
-                      <BreadcrumbSeparator />
-                      <BreadcrumbItem>
-                        <BreadcrumbPage>Analytics</BreadcrumbPage>
-                      </BreadcrumbItem>
-                    </BreadcrumbList>
-                  </Breadcrumb>
-                </div>
-                <div className='flex items-center gap-4'>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant='outline' size='sm'>
-                        <Plus className='mr-2 h-4 w-4' />
-                        Create
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align='end'>
-                      <DropdownMenuLabel>Create New</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>
-                        <Plus className='mr-2 h-4 w-4' /> New Project
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Settings2 className='mr-2 h-4 w-4' /> New Team
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <Bell className='mr-2 h-4 w-4' /> New Alert
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                  <Separator orientation='vertical' className='h-4' />
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant='ghost' size='icon'>
-                        <Bell className='h-4 w-4' />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align='end' className='w-[300px] scrollbar'>
-                      <DropdownMenuLabel>Notifications</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
-                      <div className='max-h-[300px] overflow-auto'>
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <DropdownMenuItem key={i} className='flex flex-col items-start gap-1 p-4'>
-                            <div className='flex w-full items-center gap-2'>
-                              <span className='font-semibold'>System Update</span>
-                              <Badge variant='secondary' className='ml-auto'>
-                                {i + 1}m ago
-                              </Badge>
-                            </div>
-                            <span className='text-muted-foreground text-sm'>
-                              A new system update is available. Please review and install.
-                            </span>
-                          </DropdownMenuItem>
-                        ))}
-                      </div>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </div>
-              </header>
-
-              <div className='flex flex-1 flex-col gap-4 p-4'>
-                <div className='grid gap-4 md:grid-cols-3'>
-                  <Card>
-                    <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                      <CardTitle className='text-sm font-medium'>Total Revenue</CardTitle>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        viewBox='0 0 24 24'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth='2'
-                        className='text-muted-foreground h-4 w-4'
-                      >
-                        <path d='M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6' />
-                      </svg>
-                    </CardHeader>
-                    <CardContent>
-                      <div className='text-2xl font-bold'>$45,231.89</div>
-                      <p className='text-muted-foreground text-xs'>+20.1% from last month</p>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                      <CardTitle className='text-sm font-medium'>Active Users</CardTitle>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        viewBox='0 0 24 24'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth='2'
-                        className='text-muted-foreground h-4 w-4'
-                      >
-                        <path d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2' />
-                        <circle cx='9' cy='7' r='4' />
-                        <path d='M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75' />
-                      </svg>
-                    </CardHeader>
-                    <CardContent>
-                      <div className='text-2xl font-bold'>+2350</div>
-                      <p className='text-muted-foreground text-xs'>+180.1% from last month</p>
-                    </CardContent>
-                  </Card>
-                  <Card>
-                    <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                      <CardTitle className='text-sm font-medium'>Sales</CardTitle>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        viewBox='0 0 24 24'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth='2'
-                        className='text-muted-foreground h-4 w-4'
-                      >
-                        <rect width='20' height='14' x='2' y='5' rx='2' />
-                        <path d='M2 10h20' />
-                      </svg>
-                    </CardHeader>
-                    <CardContent>
-                      <div className='text-2xl font-bold'>+12,234</div>
-                      <p className='text-muted-foreground text-xs'>+19% from last month</p>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-8'>
-                  <Card className='md:col-span-8'>
-                    <CardHeader>
-                      <CardTitle>Recent Sales</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <Table>
-                        <TableHeader>
-                          <TableRow>
-                            <TableHead>Customer</TableHead>
-                            <TableHead>Status</TableHead>
-                            <TableHead>Date</TableHead>
-                            <TableHead className='text-right'>Amount</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {Array.from({ length: 5 }).map((_, i) => (
-                            <TableRow key={i}>
-                              <TableCell className='font-medium'>
-                                {
-                                  [
-                                    'Alice Smith',
-                                    'Bob Johnson',
-                                    'Charlie Brown',
-                                    'Diana Miller',
-                                    'Eva Davis',
-                                  ][i]
-                                }
-                              </TableCell>
-                              <TableCell>
-                                <Badge variant={i % 2 ? 'secondary' : 'default'}>
-                                  {i % 2 ? 'Pending' : 'Completed'}
-                                </Badge>
-                              </TableCell>
-                              <TableCell>{new Date().toLocaleDateString()}</TableCell>
-                              <TableCell className='text-right'>
-                                ${(Math.random() * 1000).toFixed(2)}
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                        </TableBody>
-                      </Table>
-                    </CardContent>
-                  </Card>
-
-                </div>
-              </div>
-            </SidebarInset>
-          </SidebarProvider>
-          <div className='p-4'>
-            <Link href='/dashboard' className='text-muted-foreground text-sm underline'>
-              Full screen example
-            </Link>
-          </div>
-        </div>
       </section>
     </div>
   );
