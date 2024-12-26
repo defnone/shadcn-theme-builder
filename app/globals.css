@@ -63,6 +63,6 @@
 
 .scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: hsl(var(--sidebar-primary)) hsl(var(--sidebar-background));
+  scrollbar-color: hsl(var(--sidebar-primary)) transparent;
 }
 
