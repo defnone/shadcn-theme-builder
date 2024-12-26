@@ -227,7 +227,7 @@ export function ApplicationExample() {
                 </Table>
               </CardContent>
             </Card>
-            <Card className='md:col-span-2 lg:col-span-8'>
+            <Card className='md:col-span-2 lg:col-span-4'>
               <CardHeader>
                 <CardTitle>Quick Insights</CardTitle>
               </CardHeader>
@@ -236,12 +236,12 @@ export function ApplicationExample() {
                 forward!
               </CardContent>
             </Card>
-            <Card className='md:col-span-2 lg:col-span-8'>
+            <Card className='md:col-span-2 lg:col-span-4'>
               <CardHeader>
                 <CardTitle>Invite New User</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className='grid grid-cols-2 gap-4 py-4'>
+                <div className='grid grid-cols-1 gap-4 py-4'>
                   <div className='grid gap-2'>
                     <Label htmlFor='name'>Name</Label>
                     <Input id='name' placeholder='User name' />
