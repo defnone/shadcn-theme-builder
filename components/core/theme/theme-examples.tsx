@@ -54,6 +54,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import { ApplicationExample } from './application-example';
 import Link from 'next/link';
+import { LoginExample } from './login-example';
 
 export function ThemeExamples() {
   return (
@@ -62,11 +63,23 @@ export function ThemeExamples() {
       <section>
         <div className='w-full rounded-lg border border-border p-0.5'>
           <ApplicationExample />
-          <div className='p-4'>
-            <Link href='/dashboard' className='text-sm text-muted-foreground underline'>
-              Full screen example
-            </Link>
-          </div>
+        </div>
+        <div className='p-4'>
+          <Link href='/dashboard' className='text-sm text-muted-foreground underline'>
+            Full screen example
+          </Link>
+        </div>
+      </section>
+
+      {/* Login Example */}
+      <section>
+        <div className='flex w-full items-center justify-center rounded-lg border border-border py-20'>
+          <LoginExample />
+        </div>
+        <div className='p-4'>
+          <Link href='/login' className='text-sm text-muted-foreground underline'>
+            Full screen example
+          </Link>
         </div>
       </section>
 
