@@ -118,13 +118,13 @@ export function ThemeCustomizer({ onExport }: ThemeCustomizerProps) {
   };
 
   return (
-    <div className='scrollbar border-sidebar-border bg-sidebar-background fixed left-0 top-0 flex h-screen max-w-[450px] flex-col overflow-y-auto overflow-x-hidden border-r p-7 pt-20 lg:min-w-[400px]'>
+    <div className='scrollbar fixed left-0 top-0 flex h-screen max-w-[450px] flex-col overflow-y-auto overflow-x-hidden border-r border-sidebar-border bg-sidebar-background p-7 pt-20 lg:min-w-[400px]'>
       {openColorPicker ? (
         <div className='sticky left-0 top-0 z-0 w-[400px]'>
           <div className='absolute left-0 top-0 h-screen max-w-[400px] overflow-y-auto'>
-            <div className='sticky top-0 border-b p-4'>
+            <div className='sticky top-0 border-b border-sidebar-border p-4'>
               <div className='flex items-center justify-between'>
-                <h2 className='text-lg font-extrabold'>
+                <h2 className='text-lg font-extrabold text-sidebar-foreground'>
                   {variables.find(v => v.name === openColorPicker)?.label}
                 </h2>
                 <Button
@@ -150,7 +150,7 @@ export function ThemeCustomizer({ onExport }: ThemeCustomizerProps) {
         </div>
       ) : (
         <>
-          <div className='text-sidebar-foreground grid grid-cols-1 gap-6 pt-4 lg:grid-cols-2'>
+          <div className='grid grid-cols-1 gap-6 pt-4 text-sidebar-foreground lg:grid-cols-2'>
             {variables.map(variable =>
               variable.name === 'radius' ? (
                 <React.Fragment key={variable.name}>

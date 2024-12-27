@@ -93,7 +93,7 @@ export function ColorPicker({
         <div className='rounded-lg'>
           <div className='grid grid-cols-2'>
             <div className='p-4'>
-              <div className='mb-2 text-sm font-medium'>Custom color</div>
+              <div className='mb-2 text-sm font-medium text-sidebar-foreground'>Custom color</div>
               <Popover open={pickerOpen} onOpenChange={setPickerOpen}>
                 <PopoverTrigger asChild>
                   <div
@@ -150,7 +150,9 @@ export function ColorPicker({
               .filter(([name]) => name !== 'custom')
               .map(([colorName, shades]) => (
                 <div key={colorName} className='p-4'>
-                  <div className='mb-2 text-sm font-medium'>{colorName}</div>
+                  <div className='mb-2 text-sm font-medium text-sidebar-foreground'>
+                    {colorName}
+                  </div>
                   <div className='grid grid-cols-11 gap-1'>
                     {Object.entries(shades).map(([shade, value]) => (
                       <div
