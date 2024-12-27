@@ -25,7 +25,7 @@ export function LoginExample() {
             <span className='w-full border-t' />
           </div>
           <div className='relative flex justify-center text-xs uppercase'>
-            <span className='bg-background px-2 text-muted-foreground'>Or</span>
+            <span className='px-2 text-muted-foreground'>Or</span>
           </div>
         </div>
         <div className='grid w-full grid-cols-1 gap-3'>
