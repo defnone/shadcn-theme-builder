@@ -35,6 +35,7 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/s
 import { DialogFooter } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 
 export function ApplicationExample() {
   const [amounts, setAmounts] = React.useState<string[]>([]);
@@ -243,17 +244,21 @@ export function ApplicationExample() {
                 <CardTitle>Invite New User</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className='grid grid-cols-1 gap-4 py-4'>
-                  <div className='grid gap-2'>
+                <div className='grid grid-cols-1 gap-4'>
+                  <div className='grid gap-3'>
                     <Label htmlFor='name'>Name</Label>
                     <Input id='name' placeholder='User name' />
                   </div>
-                  <div className='grid gap-2'>
+                  <div className='grid gap-3'>
                     <Label htmlFor='email'>Email</Label>
                     <Input id='email' placeholder='user@example.com' type='email' />
                   </div>
+                  <div className='flex items-center justify-between py-2'>
+                    <Label htmlFor='team'>Add to team</Label>
+                    <Switch id='team' />
+                  </div>
                 </div>
-                <DialogFooter>
+                <DialogFooter className='mt-4 border-t pt-4'>
                   <Button type='submit'>Send</Button>
                 </DialogFooter>
               </CardContent>
