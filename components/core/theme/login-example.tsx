@@ -31,7 +31,7 @@ export function LoginExample() {
             <span className='bg-card px-2 text-muted-foreground'>Or</span>
           </div>
         </div>
-        <div className='grid w-full grid-cols-1 gap-4'>
+        <div className='grid w-full grid-cols-1 gap-3'>
           <Button variant='outline'>
             <FaApple className='mr-1' />
             Continue with Apple
