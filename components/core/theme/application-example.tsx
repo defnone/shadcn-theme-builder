@@ -231,9 +231,11 @@ export function ApplicationExample() {
               <CardHeader>
                 <CardTitle>Quick Insights</CardTitle>
               </CardHeader>
-              <CardContent className='text-base'>
-                Here&apos;s a snapshot of your recent activity. Stay informed and keep moving
-                forward!
+              <CardContent className='text-base leading-relaxed'>
+                Dive into your recent activity! This dashboard provides a quick overview of key
+                metrics and updates. Explore the latest sales figures, track your progress, and stay
+                ahead of the curve. Remember, every step forward counts! This is a longer text to
+                demonstrate the text wrapping and how it adapts to different screen sizes.
               </CardContent>
             </Card>
             <Card className='md:col-span-2 lg:col-span-4'>
