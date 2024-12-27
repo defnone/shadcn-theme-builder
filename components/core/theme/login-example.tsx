@@ -3,7 +3,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { FaApple, FaGoogle } from 'react-icons/fa';
 
 export function LoginExample() {
   return (
@@ -25,18 +24,12 @@ export function LoginExample() {
             <span className='w-full border-t' />
           </div>
           <div className='relative flex justify-center text-xs uppercase'>
-            <span className='bg-card px-2 text-muted-foreground'>Or</span>
+            <span className='bg-background px-2 text-muted-foreground'>Or</span>
           </div>
         </div>
-        <div className='grid w-full grid-cols-1 gap-3'>
-          <Button variant='outline'>
-            <FaApple className='mx-2 h-4 w-4' />
-            Continue with Apple
-          </Button>
-          <Button variant='outline'>
-            <FaGoogle className='mx-2 h-4 w-4' />
-            Continue with Google
-          </Button>
+        <div className='grid w-full grid-cols-2 gap-4'>
+          <Button variant='outline'>Continue with Apple</Button>
+          <Button variant='outline'>Continue with Google</Button>
         </div>
       </CardContent>
       <div className='px-4 pb-4 text-center text-sm text-muted-foreground'>
