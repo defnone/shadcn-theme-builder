@@ -90,13 +90,14 @@ export function ThemeExamples() {
       </section>
 
       {/* Text on Background Example */}
-      <section>
-        <h1 className='mb-4 text-4xl font-bold'>
+      <section className='max-w-[80ch]'>
+        <h1 className='mb-4 text-4xl font-extrabold'>
           The Rise of Artificial Intelligence in Healthcare
         </h1>
-        <h3 className='mb-2 text-2xl font-semibold'>
+        <p className='mb-5 text-muted-foreground'>Written by Dr. Sarah Johnson, 5 min read</p>
+        <h2 className='mb-2 text-2xl font-semibold'>
           Transforming Patient Care Through Innovation
-        </h3>
+        </h2>
         <p className='mb-4 leading-relaxed'>
           Artificial Intelligence (AI) is revolutionizing the healthcare industry, offering
           unprecedented opportunities to improve patient care, streamline medical processes, and
@@ -111,9 +112,6 @@ export function ThemeExamples() {
           can detect subtle patterns that might escape the human eye. These systems have shown
           remarkable accuracy in identifying potential malignancies and other abnormalities in
           X-rays, MRIs, and CT scans.
-        </p>
-        <p className='text-muted-foreground'>
-          Published on October 15, 2023 | Written by Dr. Sarah Johnson | 5 min read
         </p>
       </section>
 
