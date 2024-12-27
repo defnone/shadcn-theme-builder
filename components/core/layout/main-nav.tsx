@@ -35,7 +35,7 @@ export function MainNav({ className, onExport }: MainNavProps) {
       <div className='flex h-16 w-full items-center justify-between'>
         <div className='flex items-center'>
           <Link href='/' className='mr-6 flex items-center space-x-2'>
-            <span className='text-xl font-black text-zinc-200'>TailwindCSS Tools</span>
+            <span className='text-xl font-black text-foreground/90'>TailwindCSS Tools</span>
           </Link>
           <nav className='flex items-center space-x-6 text-sm font-medium'>
             {menuItems.map(item => (
