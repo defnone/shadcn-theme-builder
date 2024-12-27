@@ -231,7 +231,7 @@ export function ApplicationExample() {
               <CardHeader>
                 <CardTitle>Quick Insights</CardTitle>
               </CardHeader>
-              <CardContent className='text-base leading-relaxed'>
+              <CardContent className='text-[0.96rem] leading-relaxed'>
                 Dive into your recent activity! This dashboard provides a quick overview of key
                 metrics and updates. Explore the latest sales figures, track your progress, and stay
                 ahead of the curve. Remember, every step forward counts! This is a longer text to
